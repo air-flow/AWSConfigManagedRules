@@ -1,0 +1,2 @@
+# AWSConfigManagedRules
+AWSConfigManagedRules
