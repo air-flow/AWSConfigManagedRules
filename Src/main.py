@@ -48,7 +48,7 @@ def ConvertMarkdown(rules):
 
 
 def OutputRules(rules):
-    with open("../Doc/rules.md", encoding="utf-8") as target:
+    with open("../Doc/rules.md", mode="w", encoding="utf-8") as target:
         target.writelines(rules)
 
 
