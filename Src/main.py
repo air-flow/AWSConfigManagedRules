@@ -17,7 +17,7 @@ def ScrapingAWSDocument():
 
     rules = []
     for child in link_list:
-        child_url = base_url + child.get('a').get("href")[2:]
+        child_url = base_url + child.find('a').get("href")[2:]
         r2 = requests.get(child_url)
         r2.encoding = 'utf-8'
         soup2 = BeautifulSoup(r2.text, 'lxml')
@@ -33,10 +33,31 @@ def ScrapingAWSDocument():
     return rules
 
 
+def ConvertMarkdown(rules):
+    result = []
+    n = "\n"
+    s = "#" * 3
+    for i in rules:
+        text = s + " " + i["rule_name"] + n
+        text += n
+        text += ">" + i["rule_detail"] + n
+        text += ">[" + i["rule_name"] + "](" + i["url"] + ")" + n
+        text += n
+        result.append(text)
+    return result
+
+
+def OutputRules(rules):
+    with open("../Doc/rules.md", encoding="utf-8") as target:
+        target.writelines(rules)
+
+
 def cd():
     os.chdir(os.path.dirname(__file__))
 
 
 if __name__ == "__main__":
     cd()
-    # rules =
+    rules = ScrapingAWSDocument()
+    OutputRules(ConvertMarkdown(rules))
+    print("END")
