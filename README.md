@@ -1,2 +1,7 @@
 # AWSConfigManagedRules
-AWSConfigManagedRules
+
+AWS Configのマネージドルールドキュメントが見づらいので一つにまとめるためのプログラムです。
+
+実行することで、Markdown形式でマネージドルールの一覧を作成できます。
+
+なお、作成日時は2022年4月24日です。
